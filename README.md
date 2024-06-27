@@ -1,38 +1,63 @@
-# React-shop-cloudfront
+# Frontend for AWS Developer course (RS School)
 
-This is frontend starter project for nodejs-aws mentoring program. It uses the following technologies:
+## [Task 3] Add backend using AWS Lambdas and API Gateway - CURRENT STEP
 
-- [Vite](https://vitejs.dev/) as a project bundler
-- [React](https://beta.reactjs.org/) as a frontend framework
-- [React-router-dom](https://reactrouterdotcom.fly.dev/) as a routing library
-- [MUI](https://mui.com/) as a UI framework
-- [React-query](https://react-query-v3.tanstack.com/) as a data fetching library
-- [Formik](https://formik.org/) as a form library
-- [Yup](https://github.com/jquense/yup) as a validation schema
-- [Vitest](https://vitest.dev/) as a test runner
-- [MSW](https://mswjs.io/) as an API mocking library
-- [Eslint](https://eslint.org/) as a code linting tool
-- [Prettier](https://prettier.io/) as a code formatting tool
-- [TypeScript](https://www.typescriptlang.org/) as a type checking tool
+### Links
 
-## Available Scripts
+* Task: https://github.com/rolling-scopes-school/aws/blob/main/aws-developer/03_serverless_api/task.md
+* cloudfront: https://d2bk3wwmc4t4q2.cloudfront.net/
+* GitHub repos (`task-3` branch):
+  * back-end: https://github.com/deniskarandashev/aws-shop-be
+  * front-end: https://github.com/deniskarandashev/nodejs-aws-shop-react
+* Requests: 
+  * GET /products: https://sfn070sct9.execute-api.eu-north-1.amazonaws.com/prod/products
+  * GET /products/{productId}: https://sfn070sct9.execute-api.eu-north-1.amazonaws.com/prod/products/10
+* Pull requests:
+  * back-end: https://github.com/deniskarandashev/aws-shop-be/pull/1
+  * front-end: https://github.com/deniskarandashev/nodejs-aws-shop-react/pull/2
+* Swagger:
+  * local:
+    * swagger ui: http://localhost:8080/swagger-ui/index.html 
+    * api-docs: http://localhost:8080/v3/api-docs
+  * `openapi.json` in the root of back-end project (`task-3` branch) contains code that can be rendered by https://editor.swagger.io/
 
-### `start`
+### Estimation (self-estimation: 100/100)
 
-Starts the project in dev mode with mocked API on local environment.
+* #### Main [70/70]
+[+] Product Service contains configuration for 2 lambda functions, API is not working at all, but configuration is correct
 
-### `build`
+[+] The getProductsList OR getProductsById lambda function returns a correct response (POINT1)
 
-Builds the project for production in `dist` folder.
+[+] The getProductsById AND getProductsList lambda functions return a correct response code (POINT2)
 
-### `preview`
+[+] Your own Frontend application is integrated with Product Service (/products API) and products from Product Service are represented on Frontend. AND POINT1 and POINT2 are done.
 
-Starts the project in production mode on local environment.
+* #### Additional [30/30]
+[+] +7.5 (All languages) - Swagger documentation is created for Product Service. This can be, for example, openapi.(json|yaml) added to the repository, that can be rendered by https://editor.swagger.io/
 
-### `test`, `test:ui`, `test:coverage`
+[+] +7.5 (All languages) - Lambda handlers are covered by basic UNIT tests (NO infrastructure logic is needed to be covered)
 
-Runs tests in console, in browser or with coverage.
+[+] +7.5 (All languages) - Lambda handlers (getProductsList, getProductsById) code is written not in 1 single module (file) and separated in codebase.
 
-### `lint`, `prettier`
+[+] +7.5 (All languages) - Main error scenarios are handled by API ("Product not found" error).
 
-Runs linting and formatting for all files in `src` folder.
+## [Task 2] React-shop-cloudfront - ARCHIVED STEP
+
+_NOTE: info below might be outdated because of next steps._
+
+### Links 
+
+* cloudfront: https://dike63j25qf7o.cloudfront.net
+* s3: http://awsstack-deploymentfrontendawsbucketc2ffaf4a-qy7lnix22sny.s3-website.eu-north-1.amazonaws.com
+
+
+### Estimation (self-estimation: 100/100)
+
+[+] - **30** - S3 bucket has been created and configured properly. The app has been uploaded to the bucket and is available though the Internet. Nothing else has been done.
+  _(Link to S3 bucket/website is provided. There is no Pull Request in the YOUR OWN frontend repository.)_
+
+[+] - **40** - In addition to the previous work a CloudFront distribution is created and configured properly and the site is served now with CloudFront and is available through the Internet over CloudFront URL, not S3-website link (due to changes in bucket’s policy...).
+  _(Link to CloudFront website is provided. S3-website shows 403 Access Denied error. There is no Pull Request in the YOUR OWN frontend repository.)_
+
+[+] - **30** - S3 bucket creation, website deployment, CloudFront Distribution and Invalidation added and configured by using AWS CDK. The app can be built and deployed by running npm script command.
+  _(Link to CloudFront website is provided. PR with all changes is submitted in the YOUR OWN frontend repository and its link is provided for review.)_
